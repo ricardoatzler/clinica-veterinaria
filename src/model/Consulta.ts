@@ -1,15 +1,15 @@
 import { Animal } from "./Animal";
 
 export class Consulta {
-  id: number;
-  animal: Animal;
-  veterinario: string;
-  dataHora: Date;
-  status: string;
-  motivoCancelamento?: string;
-  valorConsulta: number;
-  formaPagamento?: string;
-  pago: boolean;
+  private readonly _id: number;
+  private readonly _animal: Animal;
+  private readonly _veterinario: string;
+  private readonly _dataHora: Date;
+  private _status: string;
+  private _motivoCancelamento?: string;
+  private readonly _valorConsulta: number;
+  private _formaPagamento?: string;
+  private _pago: boolean;
 
   constructor(
     id: number,
@@ -27,13 +27,49 @@ export class Consulta {
       console.log("Aviso: " + (e as Error).message);
     }
 
-    this.id = id;
-    this.animal = animal;
-    this.veterinario = veterinario;
-    this.dataHora = dataHora;
-    this.valorConsulta = valorConsulta;
-    this.status = "agendada";
-    this.pago = false;
+    this._id = id;
+    this._animal = animal;
+    this._veterinario = veterinario;
+    this._dataHora = dataHora;
+    this._valorConsulta = valorConsulta;
+    this._status = "agendada";
+    this._pago = false;
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  get animal(): Animal {
+    return this._animal;
+  }
+
+  get veterinario(): string {
+    return this._veterinario;
+  }
+
+  get dataHora(): Date {
+    return this._dataHora;
+  }
+
+  get status(): string {
+    return this._status;
+  }
+
+  get motivoCancelamento(): string | undefined {
+    return this._motivoCancelamento;
+  }
+
+  get valorConsulta(): number {
+    return this._valorConsulta;
+  }
+
+  get formaPagamento(): string | undefined {
+    return this._formaPagamento;
+  }
+
+  get pago(): boolean {
+    return this._pago;
   }
 
   registrarPagamento(forma: string): void {
@@ -42,16 +78,20 @@ export class Consulta {
       forma === "cartao" ||
       forma === "dinheiro"
     ) {
-      this.formaPagamento = forma;
-      this.pago = true;
+      this._formaPagamento = forma;
+      this._pago = true;
     } else {
       throw new Error("Forma de pagamento inválida: " + forma);
     }
   }
 
   cancelar(motivo: string): void {
-    this.status = "cancelada";
-    this.motivoCancelamento = motivo;
+    this._status = "cancelada";
+    this._motivoCancelamento = motivo;
+  }
+
+  finalizar(): void {
+    this._status = "finalizada";
   }
 
   imprimirResumo(): void {
