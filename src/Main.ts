@@ -27,8 +27,8 @@ class Main {
       "cirurgiao"
     );
 
-    clinica.veterinarios.push(v1);
-    clinica.veterinarios.push(v2);
+    clinica.cadastrarVeterinario(v1);
+    clinica.cadastrarVeterinario(v2);
 
     // ---- Cadastro de animais ---------------------------------------------
     const dog = new Cachorro(
@@ -54,8 +54,8 @@ class Main {
       "55566677788"
     );
 
-    clinica.animais.push(dog);
-    clinica.animais.push(cat);
+    clinica.cadastrarAnimal(dog);
+    clinica.cadastrarAnimal(cat);
 
     // ---- Agendamento -----------------------------------------------------
     const c1 = clinica.agendarConsulta("Rex", "Dr. Carlos", new Date());
@@ -76,8 +76,8 @@ class Main {
 
     // ---- Prontuário ------------------------------------------------------
     const p = new Prontuario(1, dog);
-    p.diagnostico = "Otite leve";
-    p.prescricao = "Antifúngico tópico";
+    p.definirDiagnostico("Otite leve");
+    p.definirPrescricao("Antifúngico tópico");
     p.adicionarObservacao("Animal agitado durante consulta");
     p.enviarEmail();
 
@@ -95,7 +95,7 @@ class Main {
     estoque.alertarEstoqueBaixo();
 
     estoque.getItens().splice(0);
-    console.log("Itens após clear externo: " + estoque.itens.length);
+    console.log("Itens após clear externo: " + estoque.getItens().length);
 
     // ---- Relatórios ------------------------------------------------------
     clinica.gerarRelatorioConsultas();

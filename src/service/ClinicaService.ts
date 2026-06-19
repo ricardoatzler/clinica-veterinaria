@@ -3,14 +3,22 @@ import { Consulta } from "../model/Consulta";
 import { Veterinario } from "../model/Veterinario";
 
 export class ClinicaService {
-  animais: Animal[] = [];
-  consultas: Consulta[] = [];
-  veterinarios: Veterinario[] = [];
-  proximoIdConsulta: number = 1;
+  private readonly animais: Animal[] = [];
+  private readonly consultas: Consulta[] = [];
+  private readonly veterinarios: Veterinario[] = [];
+  private proximoIdConsulta: number = 1;
 
   // -----------------------------------------------------------------------
   // AGENDAMENTO
   // -----------------------------------------------------------------------
+
+  cadastrarAnimal(animal: Animal): void {
+    this.animais.push(animal);
+  }
+
+  cadastrarVeterinario(veterinario: Veterinario): void {
+    this.veterinarios.push(veterinario);
+  }
 
   agendarConsulta(nomeAnimal: string, nomeVeterinario: string, dataHora: Date): Consulta {
     let animal: Animal | undefined;

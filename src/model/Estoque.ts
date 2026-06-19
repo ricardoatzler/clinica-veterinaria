@@ -1,27 +1,53 @@
+export class Medicamento {
+  private readonly _nome: string;
+  private readonly _tipo: string;
+  private readonly _preco: number;
+  private _quantidade: number;
+  private readonly _validade: string;
+
+  constructor(
+    nome: string,
+    tipo: string,
+    preco: number,
+    quantidade: number,
+    validade: string
+  ) {
+    this._nome = nome;
+    this._tipo = tipo;
+    this._preco = preco;
+    this._quantidade = quantidade;
+    this._validade = validade;
+  }
+
+  get nome(): string {
+    return this._nome;
+  }
+
+  get tipo(): string {
+    return this._tipo;
+  }
+
+  get preco(): number {
+    return this._preco;
+  }
+
+  get quantidade(): number {
+    return this._quantidade;
+  }
+
+  get validade(): string {
+    return this._validade;
+  }
+
+  reduzirQuantidade(qtd: number): void {
+    this._quantidade -= qtd;
+  }
+}
+
 export class Estoque {
-  static Medicamento = class {
-    nome: string;
-    tipo: string;
-    preco: number;
-    quantidade: number;
-    validade: string;
+  static Medicamento = Medicamento;
 
-    constructor(
-      nome: string,
-      tipo: string,
-      preco: number,
-      quantidade: number,
-      validade: string
-    ) {
-      this.nome = nome;
-      this.tipo = tipo;
-      this.preco = preco;
-      this.quantidade = quantidade;
-      this.validade = validade;
-    }
-  };
-
-  itens: InstanceType<typeof Estoque.Medicamento>[] = [];
+  private readonly itens: InstanceType<typeof Estoque.Medicamento>[] = [];
 
   adicionar(m: InstanceType<typeof Estoque.Medicamento>): void {
     this.itens.push(m);
@@ -34,7 +60,7 @@ export class Estoque {
           if (m.quantidade < qtd) {
             throw new Error("Estoque insuficiente");
           }
-          m.quantidade -= qtd;
+          m.reduzirQuantidade(qtd);
           return true;
         } catch (e) {
           return false;
