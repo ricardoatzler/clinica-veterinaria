@@ -1,8 +1,8 @@
 import { Animal } from "./Animal";
 
 export class Cachorro extends Animal {
-  raca: string;
-  vacinado: boolean;
+  private readonly _raca: string;
+  private readonly _vacinado: boolean;
 
   constructor(
     nome: string,
@@ -16,8 +16,16 @@ export class Cachorro extends Animal {
     cpfDono: string
   ) {
     super(nome, idade, peso, "cachorro", porte, nomeDono, telefoneDono, cpfDono);
-    this.raca = raca;
-    this.vacinado = vacinado;
+    this._raca = raca;
+    this._vacinado = vacinado;
+  }
+
+  get raca(): string {
+    return this._raca;
+  }
+
+  get vacinado(): boolean {
+    return this._vacinado;
   }
 
   override getCategoriaVacina(): string {

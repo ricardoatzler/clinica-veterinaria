@@ -1,8 +1,8 @@
 import { Animal } from "./Animal";
 
 export class Gato extends Animal {
-  ehCastrado: boolean;
-  pelagem: string;
+  private readonly _ehCastrado: boolean;
+  private readonly _pelagem: string;
 
   constructor(
     nome: string,
@@ -15,7 +15,15 @@ export class Gato extends Animal {
     cpfDono: string
   ) {
     super(nome, idade, peso, "gato", "pequeno", nomeDono, telefoneDono, cpfDono);
-    this.ehCastrado = ehCastrado;
-    this.pelagem = pelagem;
+    this._ehCastrado = ehCastrado;
+    this._pelagem = pelagem;
+  }
+
+  get ehCastrado(): boolean {
+    return this._ehCastrado;
+  }
+
+  get pelagem(): string {
+    return this._pelagem;
   }
 }
