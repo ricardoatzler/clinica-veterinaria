@@ -56,15 +56,12 @@ export class Estoque {
   darBaixa(nomeMedicamento: string, qtd: number): boolean {
     for (const m of this.itens) {
       if (m.nome === nomeMedicamento) {
-        try {
-          if (m.quantidade < qtd) {
-            throw new Error("Estoque insuficiente");
-          }
-          m.reduzirQuantidade(qtd);
-          return true;
-        } catch (e) {
+        if (m.quantidade < qtd) {
           return false;
         }
+
+        m.reduzirQuantidade(qtd);
+        return true;
       }
     }
 
