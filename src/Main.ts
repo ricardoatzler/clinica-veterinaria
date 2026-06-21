@@ -79,7 +79,6 @@ class Main {
     p.definirDiagnostico("Otite leve");
     p.definirPrescricao("Antifúngico tópico");
     p.adicionarObservacao("Animal agitado durante consulta");
-    p.enviarEmail();
 
     // ---- Estoque ---------------------------------------------------------
     const estoque = new Estoque();

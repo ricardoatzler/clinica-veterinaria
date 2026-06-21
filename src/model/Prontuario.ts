@@ -1,15 +1,6 @@
 import { Animal } from "./Animal";
 
-interface Registravel {
-  registrar(): void;
-  atualizar(): void;
-  deletar(): void;
-  imprimir(): void;
-  exportarCSV(): void;
-  enviarEmail(): void;
-}
-
-export class Prontuario implements Registravel {
+export class Prontuario {
   private readonly _id: number;
   private readonly _animal: Animal;
   private readonly _observacoes: string[] = [];
@@ -61,9 +52,6 @@ export class Prontuario implements Registravel {
     console.log("Prontuário atualizado.");
   }
 
-  deletar(): void {
-  }
-
   imprimir(): void {
     console.log(
       "Prontuário #" +
@@ -72,16 +60,6 @@ export class Prontuario implements Registravel {
         this.animal.nome +
         " | Diagnóstico: " +
         this.diagnostico
-    );
-  }
-
-  exportarCSV(): void {
-
-  }
-
-  enviarEmail(): void {
-    console.log(
-      "Enviando prontuário por email para " + this.animal.nomeDono
     );
   }
 
