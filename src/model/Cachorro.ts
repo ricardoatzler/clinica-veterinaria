@@ -1,4 +1,5 @@
 import { Animal } from "./Animal";
+import { Especie, Porte } from "../enums/ClinicaEnums";
 
 export class Cachorro extends Animal {
   private readonly _raca: string;
@@ -8,14 +9,14 @@ export class Cachorro extends Animal {
     nome: string,
     idade: number,
     peso: number,
-    porte: string,
+    porte: Porte,
     raca: string,
     vacinado: boolean,
     nomeDono: string,
     telefoneDono: string,
     cpfDono: string
   ) {
-    super(nome, idade, peso, "cachorro", porte, nomeDono, telefoneDono, cpfDono);
+    super(nome, idade, peso, Especie.CACHORRO, porte, nomeDono, telefoneDono, cpfDono);
     this._raca = raca;
     this._vacinado = vacinado;
   }

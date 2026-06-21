@@ -4,6 +4,11 @@ import { Cachorro } from "./model/Cachorro";
 import { Gato } from "./model/Gato";
 import { Prontuario } from "./model/Prontuario";
 import { Estoque } from "./model/Estoque";
+import {
+  EspecialidadeVeterinaria,
+  FormaPagamento,
+  Porte,
+} from "./enums/ClinicaEnums";
 
 class Main {
   static main(): void {
@@ -16,7 +21,7 @@ class Main {
       "51999990001",
       "carlos@clinica.com",
       "CRMV-1234",
-      "clinico"
+      EspecialidadeVeterinaria.CLINICO
     );
     const v2 = new Veterinario(
       "Dra. Ana",
@@ -24,7 +29,7 @@ class Main {
       "51999990002",
       "ana@clinica.com",
       "CRMV-5678",
-      "cirurgiao"
+      EspecialidadeVeterinaria.CIRURGIAO
     );
 
     clinica.cadastrarVeterinario(v1);
@@ -35,7 +40,7 @@ class Main {
       "Rex",
       3,
       12.5,
-      "grande",
+      Porte.GRANDE,
       "Labrador",
       false,
       "João Silva",
@@ -62,13 +67,8 @@ class Main {
     const c2 = clinica.agendarConsulta("Mimi", "Dra. Ana", new Date());
 
     // ---- Pagamento -------------------------------------------------------
-    c1.registrarPagamento("pix");
-
-    try {
-      c2.registrarPagamento("Cartao");
-    } catch (e) {
-      console.log("Erro no pagamento: " + (e as Error).message);
-    }
+    c1.registrarPagamento(FormaPagamento.PIX);
+    c2.registrarPagamento(FormaPagamento.CARTAO);
 
     // ---- Desconto --------------------------------------------------------
     const desconto = clinica.calcularDesconto(c1);

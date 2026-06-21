@@ -1,6 +1,7 @@
 import { Animal } from "../model/Animal";
 import { Consulta } from "../model/Consulta";
 import { Veterinario } from "../model/Veterinario";
+import { Especie } from "../enums/ClinicaEnums";
 
 export class ClinicaService {
   private readonly animais: Animal[] = [];
@@ -113,12 +114,12 @@ export class ClinicaService {
 
   calcularDesconto(c: Consulta): number {
     if (
-      c.animal.especie === "cachorro" &&
+      c.animal.especie === Especie.CACHORRO &&
       c.valorConsulta > 200
     ) {
       return c.valorConsulta * 0.1;
     }
-    if (c.animal.especie === "gato") {
+    if (c.animal.especie === Especie.GATO) {
       return c.valorConsulta * 0.05;
     }
 

@@ -1,12 +1,11 @@
-type Especie = "cachorro" | "gato" | "passaro" | "reptil";
-type Porte = "pequeno" | "medio" | "grande";
+import { Especie, Porte } from "../enums/ClinicaEnums";
 
 export class Animal {
   private readonly _nome: string;
   private readonly _idade: number;
   private readonly _peso: number;
-  private readonly _especie: string;
-  private readonly _porte: string;
+  private readonly _especie: Especie;
+  private readonly _porte: Porte;
   private readonly _nomeDono: string;
   private readonly _telefoneDono: string;
   private readonly _cpfDono: string;
@@ -15,8 +14,8 @@ export class Animal {
     nome: string,
     idade: number,
     peso: number,
-    especie: string,
-    porte: string,
+    especie: Especie,
+    porte: Porte,
     nomeDono: string,
     telefoneDono: string,
     cpfDono: string
@@ -43,11 +42,11 @@ export class Animal {
     return this._peso;
   }
 
-  get especie(): string {
+  get especie(): Especie {
     return this._especie;
   }
 
-  get porte(): string {
+  get porte(): Porte {
     return this._porte;
   }
 
@@ -64,11 +63,11 @@ export class Animal {
   }
 
   getCategoriaVacina(): string {
-    if (this.especie === "cachorro") {
-      if (this.porte === "pequeno") return "V8-pequeno";
-      if (this.porte === "medio") return "V8-medio";
+    if (this.especie === Especie.CACHORRO) {
+      if (this.porte === Porte.PEQUENO) return "V8-pequeno";
+      if (this.porte === Porte.MEDIO) return "V8-medio";
       return "V10-grande";
-    } else if (this.especie === "gato") {
+    } else if (this.especie === Especie.GATO) {
       return "V4-felino";
     }
 

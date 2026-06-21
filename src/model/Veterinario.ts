@@ -1,9 +1,10 @@
 import { Pessoa } from "./Pessoa";
 import { Consulta } from "./Consulta";
+import { EspecialidadeVeterinaria, TipoConsulta } from "../enums/ClinicaEnums";
 
 export class Veterinario extends Pessoa {
   private readonly _crmv: string;
-  private readonly _especialidade: string;
+  private readonly _especialidade: EspecialidadeVeterinaria;
   private readonly _historicoConsultas: Consulta[] = [];
   private _disponivel: boolean = true;
 
@@ -13,7 +14,7 @@ export class Veterinario extends Pessoa {
     telefone: string,
     email: string,
     crmv: string,
-    especialidade: string
+    especialidade: EspecialidadeVeterinaria
   ) {
     super(nome, cpf, telefone, email);
     this._crmv = crmv;
@@ -24,7 +25,7 @@ export class Veterinario extends Pessoa {
     return this._crmv;
   }
 
-  get especialidade(): string {
+  get especialidade(): EspecialidadeVeterinaria {
     return this._especialidade;
   }
 
@@ -36,13 +37,13 @@ export class Veterinario extends Pessoa {
     return this._disponivel;
   }
 
-  calcularValorConsulta(tipoConsulta: string): number {
-    if (this.especialidade === "clinico") {
-      if (tipoConsulta === "rotina") return 150.0;
-      if (tipoConsulta === "emergencia") return 300.0;
-    } else if (this.especialidade === "cirurgiao") {
-      if (tipoConsulta === "rotina") return 250.0;
-      if (tipoConsulta === "emergencia") return 500.0;
+  calcularValorConsulta(tipoConsulta: TipoConsulta): number {
+    if (this.especialidade === EspecialidadeVeterinaria.CLINICO) {
+      if (tipoConsulta === TipoConsulta.ROTINA) return 150.0;
+      if (tipoConsulta === TipoConsulta.EMERGENCIA) return 300.0;
+    } else if (this.especialidade === EspecialidadeVeterinaria.CIRURGIAO) {
+      if (tipoConsulta === TipoConsulta.ROTINA) return 250.0;
+      if (tipoConsulta === TipoConsulta.EMERGENCIA) return 500.0;
     }
 
     return 0.0;
