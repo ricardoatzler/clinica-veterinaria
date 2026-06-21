@@ -68,13 +68,15 @@ export abstract class Animal {
 
     abstract calcularDesconto(valorConsulta: number): number;
 
-    imprimirFicha(): void {
-        console.log("====== FICHA DO ANIMAL ======");
-        console.log("Nome: " + this.nome);
-        console.log("Espécie: " + this.especie);
-        console.log("Porte: " + this.porte);
-        console.log("Peso: " + this.peso + " kg");
-        console.log("Idade: " + this.idade + " anos");
-        console.log("Dono: " + this.nomeDono + " | CPF: " + this.cpfDono + " | Tel: " + this.telefoneDono);
+    imprimirFicha(): string {
+        return [
+            "====== FICHA DO ANIMAL ======",
+            "Nome: " + this.nome,
+            "Espécie: " + this.especie,
+            "Porte: " + this.porte,
+            "Peso: " + this.peso + " kg",
+            "Idade: " + this.idade + " anos",
+            "Dono: " + this.nomeDono + " | CPF: " + this.cpfDono + " | Tel: " + this.telefoneDono,
+        ].join("\n");
     }
 }

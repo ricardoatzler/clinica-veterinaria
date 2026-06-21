@@ -49,9 +49,11 @@ export class Cachorro extends Animal {
         return 0;
     }
 
-    override imprimirFicha(): void {
-        super.imprimirFicha();
-        console.log("Raça : " + this.raca);
-        console.log("Vacina: " + (this.vacinado ? "Em dia" : "Pendente"));
+    override imprimirFicha(): string {
+        return [
+            super.imprimirFicha(),
+            "Raça : " + this.raca,
+            "Vacina: " + (this.vacinado ? "Em dia" : "Pendente"),
+        ].join("\n");
     }
 }

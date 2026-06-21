@@ -94,9 +94,8 @@ export class Consulta {
         this._status = StatusConsulta.FINALIZADA; // Usando o Enum
     }
 
-    imprimirResumo(): void {
-        console.log(
-            "[Consulta #" +
+    imprimirResumo(): string {
+        return "[Consulta #" +
             this._id +
             " | " +
             this._animal.nome +
@@ -107,7 +106,6 @@ export class Consulta {
             " | Valor: R$" +
             this._valorConsulta +
             " | Pago: " +
-            (this._pago ? "Sim" : "Não")
-        );
+            (this._pago ? "Sim" : "Não");
     }
 }

@@ -44,23 +44,21 @@ export class Prontuario {
     return this._prescricao;
   }
 
-  registrar(): void {
-    console.log("Prontuário #" + this.id + " registrado.");
+  registrar(): string {
+    return "Prontuário #" + this.id + " registrado.";
   }
 
-  atualizar(): void {
-    console.log("Prontuário atualizado.");
+  atualizar(): string {
+    return "Prontuário atualizado.";
   }
 
-  imprimir(): void {
-    console.log(
-      "Prontuário #" +
+  imprimir(): string {
+    return "Prontuário #" +
         this.id +
         " | Animal: " +
         this.animal.nome +
         " | Diagnóstico: " +
-        this.diagnostico
-    );
+        this.diagnostico;
   }
 
   adicionarObservacao(obs: string): void {

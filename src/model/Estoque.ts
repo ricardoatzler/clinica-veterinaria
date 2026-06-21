@@ -72,10 +72,11 @@ export class Estoque {
     return this.itens;
   }
 
-  imprimirEstoque(): void {
-    console.log("===== ESTOQUE =====");
+  imprimirEstoque(): string {
+    const linhas = ["===== ESTOQUE ====="];
+
     for (const m of this.itens) {
-      console.log(
+      linhas.push(
         m.nome +
           " | " +
           m.tipo +
@@ -87,13 +88,19 @@ export class Estoque {
           m.preco
       );
     }
+
+    return linhas.join("\n");
   }
 
-  alertarEstoqueBaixo(): void {
+  alertarEstoqueBaixo(): string[] {
+    const alertas: string[] = [];
+
     for (const m of this.itens) {
       if (m.quantidade < 5) {
-        console.log("ALERTA: estoque baixo para " + m.nome);
+        alertas.push("ALERTA: estoque baixo para " + m.nome);
       }
     }
+
+    return alertas;
   }
 }
