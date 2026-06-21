@@ -14,19 +14,15 @@ export class Consulta {
 
     constructor(
         id: number,
-        animal: Animal,
-        veterinario: string,
+        animal: Animal | null,
+        veterinario: string | null,
         dataHora: Date,
         valorConsulta: number
     ) {
-        try {
-            if (animal === null) throw new Error("animal nulo");
-            if (valorConsulta < 0) throw new Error("valor negativo");
-            if (veterinario === null || veterinario.length === 0)
-                throw new Error("sem veterinário");
-        } catch (e) {
-            console.log("Aviso: " + (e as Error).message);
-        }
+        if (animal === null) throw new Error("animal nulo");
+        if (valorConsulta < 0) throw new Error("valor negativo");
+        if (veterinario === null || veterinario.length === 0)
+            throw new Error("sem veterinário");
         
         this._id = id;
         this._animal = animal;
