@@ -91,7 +91,9 @@ class Main {
     );
     estoque.adicionar(med);
 
-    estoque.alertarEstoqueBaixo();
+    for (const alerta of estoque.alertarEstoqueBaixo()) {
+      console.log(alerta);
+    }
 
     estoque.getItens().splice(0);
     console.log("Itens após clear externo: " + estoque.getItens().length);

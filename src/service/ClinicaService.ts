@@ -92,7 +92,7 @@ export class ClinicaService {
     let receita = 0;
 
     for (const c of this.consultas) {
-      c.imprimirResumo();
+      console.log(c.imprimirResumo());
       if (c.pago) receita += c.valorConsulta;
       total++;
     }
@@ -103,7 +103,7 @@ export class ClinicaService {
   gerarRelatorioAnimais(): void {
     console.log("===== ANIMAIS CADASTRADOS =====");
     for (const a of this.animais) {
-      a.imprimirFicha();
+      console.log(a.imprimirFicha());
     }
   }
 
