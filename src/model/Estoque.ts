@@ -68,8 +68,8 @@ export class Estoque {
     return false;
   }
 
-  getItens(): InstanceType<typeof Estoque.Medicamento>[] {
-    return this.itens;
+  getItens(): readonly InstanceType<typeof Estoque.Medicamento>[] {
+    return [...this.itens];
   }
 
   imprimirEstoque(): string {
