@@ -95,8 +95,9 @@ class Main {
       console.log(alerta);
     }
 
-    estoque.getItens().splice(0);
-    console.log("Itens após clear externo: " + estoque.getItens().length);
+    const itensExternos = estoque.getItens();
+    console.log("Itens retornados externamente: " + itensExternos.length);
+    console.log("Itens no estoque após acesso externo: " + estoque.getItens().length);
 
     // ---- Relatórios ------------------------------------------------------
     clinica.gerarRelatorioConsultas();
