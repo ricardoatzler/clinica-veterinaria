@@ -66,6 +66,8 @@ export abstract class Animal {
     // Método abstrato: cada animal resolverá o seu
     abstract getCategoriaVacina(): string;
 
+    abstract calcularDesconto(valorConsulta: number): number;
+
     imprimirFicha(): void {
         console.log("====== FICHA DO ANIMAL ======");
         console.log("Nome: " + this.nome);

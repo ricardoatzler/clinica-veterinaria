@@ -30,4 +30,8 @@ export class Gato extends Animal {
     override getCategoriaVacina(): string {
         return "V4-felino";
     }
+
+    override calcularDesconto(valorConsulta: number): number {
+        return valorConsulta * 0.05;
+    }
 }

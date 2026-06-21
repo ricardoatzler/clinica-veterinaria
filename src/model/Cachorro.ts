@@ -41,6 +41,14 @@ export class Cachorro extends Animal {
         return vacinaBase + (this.vacinado ? "-reforco" : "-primaria");
     }
 
+    override calcularDesconto(valorConsulta: number): number {
+        if (valorConsulta > 200) {
+            return valorConsulta * 0.1;
+        }
+
+        return 0;
+    }
+
     override imprimirFicha(): void {
         super.imprimirFicha();
         console.log("Raça : " + this.raca);

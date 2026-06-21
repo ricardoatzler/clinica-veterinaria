@@ -112,17 +112,7 @@ export class ClinicaService {
   // -----------------------------------------------------------------------
 
   calcularDesconto(c: Consulta): number {
-    if (
-      c.animal.especie === "cachorro" &&
-      c.valorConsulta > 200
-    ) {
-      return c.valorConsulta * 0.1;
-    }
-    if (c.animal.especie === "gato") {
-      return c.valorConsulta * 0.05;
-    }
-
-    return 0;
+    return c.animal.calcularDesconto(c.valorConsulta);
   }
 
   // -----------------------------------------------------------------------
