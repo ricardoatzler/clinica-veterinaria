@@ -20,6 +20,14 @@ export class ClinicaService {
     this.veterinarios.push(veterinario);
   }
 
+  getAnimais(): readonly Animal[] {
+    return [...this.animais];
+  }
+
+  getConsultas(): readonly Consulta[] {
+    return [...this.consultas];
+  }
+
   agendarConsulta(nomeAnimal: string, nomeVeterinario: string, dataHora: Date): Consulta {
     let animal: Animal | undefined;
     let vet: Veterinario | undefined;
@@ -79,31 +87,6 @@ export class ClinicaService {
         );
         return;
       }
-    }
-  }
-
-  // -----------------------------------------------------------------------
-  // RELATÓRIO
-  // -----------------------------------------------------------------------
-
-  gerarRelatorioConsultas(): void {
-    console.log("===== RELATÓRIO DE CONSULTAS =====");
-    let total = 0;
-    let receita = 0;
-
-    for (const c of this.consultas) {
-      console.log(c.imprimirResumo());
-      if (c.pago) receita += c.valorConsulta;
-      total++;
-    }
-
-    console.log("Total: " + total + " | Receita: R$" + receita);
-  }
-
-  gerarRelatorioAnimais(): void {
-    console.log("===== ANIMAIS CADASTRADOS =====");
-    for (const a of this.animais) {
-      console.log(a.imprimirFicha());
     }
   }
 
