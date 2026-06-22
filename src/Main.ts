@@ -4,10 +4,12 @@ import { Cachorro } from "./model/Cachorro";
 import { Gato } from "./model/Gato";
 import { Prontuario } from "./model/Prontuario";
 import { Estoque } from "./model/Estoque";
+import { RelatorioClinicaService } from "./service/RelatorioClinicaService";
 
 class Main {
   static main(): void {
     const clinica = new ClinicaService();
+    const relatorios = new RelatorioClinicaService();
 
     // ---- Cadastro de veterinários ----------------------------------------
     const v1 = new Veterinario(
@@ -100,8 +102,8 @@ class Main {
     console.log("Itens no estoque após acesso externo: " + estoque.getItens().length);
 
     // ---- Relatórios ------------------------------------------------------
-    clinica.gerarRelatorioConsultas();
-    clinica.gerarRelatorioAnimais();
+    console.log(relatorios.gerarRelatorioConsultas(clinica.getConsultas()));
+    console.log(relatorios.gerarRelatorioAnimais(clinica.getAnimais()));
 
     // ---- Cancelamento -------------------------------
     clinica.cancelarConsulta(999, "ID inexistente");
